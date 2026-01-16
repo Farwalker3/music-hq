@@ -1,10 +1,862 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		
-	</body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>John C. Barr (Farwalker3) — Music</title>
+  <meta name="description" content="Albums, singles, and the music tools John C. Barr (Farwalker3) uses." />
+  <style>
+    :root{
+      --bg0:#070814;
+      --bg1:#0a0c1c;
+      --card:#0f1330cc;
+      --card2:#0f1330;
+      --stroke:#1a2050;
+      --text:#e9ecff;
+      --muted:#aab2e6;
+      --muted2:#7f88c7;
+      --brand:#b7a7ff;
+      --brand2:#67d6ff;
+      --good:#7CFFB2;
+      --warn:#ffd38a;
+      --bad:#ff7aa8;
+      --shadow: 0 16px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 14px;
+      --gap: 14px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(183,167,255,.22), transparent 55%),
+        radial-gradient(900px 600px at 80% 35%, rgba(103,214,255,.14), transparent 55%),
+        radial-gradient(900px 600px at 45% 90%, rgba(255,122,168,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow:hidden; /* no scrolling on desktop */
+    }
+
+    .app{
+      height:100vh;
+      width:100vw;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:var(--gap);
+      padding:16px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background: linear-gradient(180deg, rgba(15,19,48,.75), rgba(10,12,28,.55));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      min-width: 260px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:10px 10px 14px 10px;
+      border-bottom:1px solid rgba(26,32,80,.7);
+      margin-bottom:10px;
+    }
+
+    .avatar{
+      width:40px;height:40px;border-radius:12px;
+      background:
+        radial-gradient(20px 20px at 30% 30%, rgba(255,255,255,.35), transparent 60%),
+        linear-gradient(135deg, rgba(183,167,255,.85), rgba(103,214,255,.65));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 12px 34px rgba(0,0,0,.35);
+      flex:0 0 auto;
+    }
+
+    .brand h1{
+      font-size:14px;
+      margin:0;
+      line-height:1.2;
+      letter-spacing:.2px;
+    }
+    .brand p{
+      margin:2px 0 0 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .search{
+      display:flex;
+      gap:10px;
+      padding:10px;
+      margin:6px 0 10px 0;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(26,32,80,.8);
+      border-radius: 14px;
+      align-items:center;
+    }
+    .search .i{font-size:14px;color:var(--muted2)}
+    .search input{
+      width:100%;
+      background:transparent;
+      border:0;
+      outline:none;
+      color:var(--text);
+      font-size:13px;
+    }
+
+    .nav{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:6px;
+      overflow:auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(183,167,255,.35) transparent;
+    }
+    .nav::-webkit-scrollbar{height:8px;width:8px}
+    .nav::-webkit-scrollbar-thumb{background:rgba(183,167,255,.25);border-radius:999px}
+
+    .nav button{
+      appearance:none;
+      border:1px solid transparent;
+      background:transparent;
+      color:var(--text);
+      padding:10px 10px;
+      border-radius: 14px;
+      text-align:left;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      transition: .15s ease;
+    }
+    .nav button:hover{
+      background: rgba(255,255,255,.04);
+      border-color: rgba(26,32,80,.85);
+    }
+    .nav button.active{
+      background: linear-gradient(135deg, rgba(183,167,255,.16), rgba(103,214,255,.08));
+      border-color: rgba(183,167,255,.35);
+      box-shadow: 0 10px 40px rgba(0,0,0,.28);
+    }
+
+    .ico{
+      width:20px;height:20px;border-radius:7px;
+      display:grid;place-items:center;
+      font-size:12px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(26,32,80,.8);
+      color: var(--muted);
+      flex:0 0 auto;
+    }
+    .nav .meta{
+      display:flex;flex-direction:column;gap:2px;
+      min-width:0;
+    }
+    .nav .title{
+      font-size:13px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .nav .sub{
+      font-size:11px;
+      color:var(--muted2);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+
+    .footerLinks{
+      margin-top:auto;
+      padding:10px 6px 4px 6px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      font-size:11px;
+      color:var(--muted);
+      text-decoration:none;
+      border:1px solid rgba(26,32,80,.85);
+      background: rgba(255,255,255,.03);
+      padding:7px 10px;
+      border-radius:999px;
+      transition:.15s ease;
+    }
+    .pill:hover{border-color: rgba(183,167,255,.35); color:var(--text)}
+    .pill strong{color:var(--text); font-weight:600}
+
+    /* Main */
+    .main{
+      background: linear-gradient(180deg, rgba(15,19,48,.55), rgba(10,12,28,.45));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden; /* keeps desktop no-scroll feel */
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      border-bottom:1px solid rgba(26,32,80,.7);
+    }
+    .topbar .left{
+      display:flex;flex-direction:column;gap:3px;min-width:0;
+    }
+    .topbar h2{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.2px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .topbar .hint{
+      margin:0;
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .topbar .right{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      border:1px solid rgba(26,32,80,.9);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      padding:9px 12px;
+      border-radius: 12px;
+      font-size:12px;
+      cursor:pointer;
+      transition:.15s ease;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn:hover{border-color: rgba(183,167,255,.35)}
+    .btn .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: rgba(183,167,255,.75);
+      box-shadow: 0 0 0 4px rgba(183,167,255,.12);
+    }
+
+    .content{
+      padding:16px;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:var(--gap);
+      height:100%;
+      min-height:0;
+    }
+
+    .panel{
+      border:1px solid rgba(26,32,80,.85);
+      background: rgba(255,255,255,.02);
+      border-radius: var(--radius);
+      padding:14px;
+      min-height:0;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .panelHeader{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid rgba(26,32,80,.6);
+      margin-bottom:10px;
+    }
+    .panelHeader h3{margin:0;font-size:13px;letter-spacing:.15px}
+    .panelHeader span{font-size:11px;color:var(--muted2)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:12px;
+      overflow:hidden;
+      min-height:0;
+    }
+
+    .card{
+      border:1px solid rgba(26,32,80,.85);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border-radius: var(--radius2);
+      padding:12px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-width:0;
+      transition:.15s ease;
+    }
+    .card:hover{border-color: rgba(183,167,255,.35)}
+    .row{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      min-width:0;
+    }
+    .badge{
+      font-size:10px;
+      color:var(--muted);
+      border:1px solid rgba(26,32,80,.9);
+      background: rgba(255,255,255,.02);
+      padding:5px 8px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+    .name{
+      font-size:13px;
+      margin:0;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .desc{
+      margin:0;
+      font-size:12px;
+      color:var(--muted);
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+      min-height: 32px;
+    }
+    .actions{
+      display:flex;gap:8px;flex-wrap:wrap;
+    }
+    .link{
+      font-size:11px;
+      text-decoration:none;
+      color:var(--text);
+      border:1px solid rgba(26,32,80,.9);
+      background: rgba(255,255,255,.02);
+      padding:7px 9px;
+      border-radius: 12px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      transition:.15s ease;
+    }
+    .link:hover{border-color: rgba(103,214,255,.35)}
+    .mini{
+      width:18px;height:18px;border-radius:7px;
+      border:1px solid rgba(26,32,80,.9);
+      background: rgba(255,255,255,.03);
+      display:grid;place-items:center;
+      font-size:11px;color:var(--muted2);
+    }
+
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      overflow:hidden;
+      min-height:0;
+    }
+
+    .bigCard{
+      border:1px solid rgba(26,32,80,.85);
+      background: rgba(255,255,255,.02);
+      border-radius: var(--radius);
+      padding:14px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      min-width:0;
+    }
+    .art{
+      width:58px;height:58px;border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(16px 16px at 35% 30%, rgba(255,255,255,.35), transparent 60%),
+        linear-gradient(135deg, rgba(183,167,255,.25), rgba(103,214,255,.15));
+      flex:0 0 auto;
+    }
+    .bigCard h4{margin:0;font-size:13px}
+    .bigCard p{margin:4px 0 0 0;font-size:12px;color:var(--muted)}
+    .bigCard .actions{margin-top:10px}
+
+    /* Scroll rules:
+       - desktop: no page scroll; panels are fixed-height with hidden overflow.
+       - mobile: allow the main area to scroll naturally. */
+    @media (max-width: 980px){
+      body{overflow:auto}
+      .app{
+        grid-template-columns: 1fr;
+        height:auto;
+        min-height:100vh;
+      }
+      .main{overflow:visible}
+      .content{
+        grid-template-columns:1fr;
+        height:auto;
+      }
+      .panel{overflow:visible}
+      .grid{overflow:visible}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Navigation">
+      <div class="brand">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <h1>John C. Barr <span style="color:var(--muted);font-weight:500;">(Farwalker3)</span></h1>
+          <p>Music • Tools • VSTs • Voice</p>
+        </div>
+      </div>
+
+      <div class="search" title="Filter everything (albums, singles, tools)">
+        <span class="i">⌕</span>
+        <input id="q" type="text" placeholder="Search: album, VST, voice bank, Suno…" />
+      </div>
+
+      <nav class="nav" id="nav"></nav>
+
+      <div class="footerLinks">
+        <a class="pill" href="#" id="siteLink"><strong>farwalker3</strong>.music</a>
+        <a class="pill" href="#" id="contactLink">Contact</a>
+        <a class="pill" href="#" id="pressKitLink">Press Kit</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="left">
+          <h2 id="viewTitle">Music</h2>
+          <p class="hint" id="viewHint">Albums, singles, and where to listen / buy.</p>
+        </div>
+        <div class="right">
+          <button class="btn" id="shuffleBtn" type="button" title="Random highlight">
+            <span class="dot" aria-hidden="true"></span> Surprise me
+          </button>
+          <button class="btn" id="copyBtn" type="button" title="Copy this page link (placeholder)">
+            ⎘ Copy link
+          </button>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="panel">
+          <div class="panelHeader">
+            <h3 id="leftTitle">Featured</h3>
+            <span id="leftMeta">0 items</span>
+          </div>
+          <div class="grid" id="leftGrid"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panelHeader">
+            <h3 id="rightTitle">Now</h3>
+            <span id="rightMeta">quick actions</span>
+          </div>
+          <div class="list" id="rightList"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+<script>
+  // Tiny icon set (text-based so you don't need images).
+  // If you want “real” tiny icons later: swap these for inline SVGs.
+  const ICON = {
+    music: "♫",
+    album: "⟡",
+    single: "•",
+    daw: "▦",
+    mix: "🎚",
+    master: "⟐",
+    vst: "▣",
+    voice: "≋",
+    ai: "✶",
+    loops: "↻",
+    library: "⧉",
+    checkout: "$"
+  };
+
+  // Edit these: add your real links + album art URLs later if you want.
+  const DATA = {
+    nav: [
+      { id:"music", label:"Music", sub:"Albums + singles", icon: ICON.music },
+      { id:"albums", label:"Albums", sub:"Full releases", icon: ICON.album },
+      { id:"singles", label:"Singles", sub:"Standalones + features", icon: ICON.single },
+      { id:"tools", label:"Music Tools", sub:"DAW + mix + master", icon: ICON.daw },
+      { id:"vsts", label:"VSTs", sub:"Synths + FX", icon: ICON.vst },
+      { id:"voice", label:"Voice Banks", sub:"Alter/Ego, etc.", icon: ICON.voice },
+      { id:"ai", label:"AI Music", sub:"Suno + more", icon: ICON.ai },
+      { id:"loops", label:"Seamless Loops", sub:"Song loops", icon: ICON.loops },
+      { id:"library", label:"Library", sub:"Everything saved", icon: ICON.library }
+      // { id:"checkout", label:"Checkout", sub:"Store / merch", icon: ICON.checkout },
+    ],
+
+    views: {
+      music: {
+        title: "Music",
+        hint: "Albums, singles, and where to listen / buy.",
+        featured: [
+          {
+            name:"Your Album Title",
+            badge:"Album",
+            desc:"One-line hook. Mood/genre tags. (Replace this with your real blurb.)",
+            links:[
+              { t:"Play", u:"#", i:"▶" },
+              { t:"Buy", u:"#", i:"$" },
+              { t:"Bandcamp", u:"#", i:"B" }
+            ]
+          },
+          {
+            name:"Your Single Title",
+            badge:"Single",
+            desc:"Short description. Feature? Theme? Release year?",
+            links:[
+              { t:"Play", u:"#", i:"▶" },
+              { t:"Spotify", u:"#", i:"S" },
+              { t:"Apple", u:"#", i:"" }
+            ]
+          },
+          {
+            name:"Compilation / EP",
+            badge:"EP",
+            desc:"EP / compilation / soundtrack. Anything you want pinned.",
+            links:[
+              { t:"Play", u:"#", i:"▶" },
+              { t:"Buy", u:"#", i:"$" }
+            ]
+          },
+          {
+            name:"Latest Release",
+            badge:"New",
+            desc:"Keep this as your always-up-to-date spotlight slot.",
+            links:[
+              { t:"Play", u:"#", i:"▶" },
+              { t:"YouTube", u:"#", i:"▶" }
+            ]
+          }
+        ],
+        side: [
+          {
+            title:"Quick links",
+            desc:"One-click listening + buying. Replace with your real destinations.",
+            actions:[
+              { t:"All music links (Linktree-style)", u:"#", i:"⤴" },
+              { t:"Press kit", u:"#", i:"⧉" },
+              { t:"Contact", u:"#", i:"✉" }
+            ]
+          },
+          {
+            title:"Pinned playlists",
+            desc:"If you curate playlists, pin them here.",
+            actions:[
+              { t:"Spotify playlist", u:"#", i:"S" },
+              { t:"YouTube playlist", u:"#", i:"▶" }
+            ]
+          }
+        ]
+      },
+
+      albums: {
+        title:"Albums",
+        hint:"Full releases. Clean tiles with play/buy links.",
+        featured: [
+          { name:"Album One", badge:"Album", desc:"Genre + vibe. Year. 1–2 sentence pitch.", links:[{t:"Play",u:"#",i:"▶"},{t:"Buy",u:"#",i:"$"}] },
+          { name:"Album Two", badge:"Album", desc:"Short pitch. Not too wordy.", links:[{t:"Play",u:"#",i:"▶"},{t:"Bandcamp",u:"#",i:"B"}] },
+          { name:"Soundtrack / OST", badge:"OST", desc:"If you do story-driven music, this is your flex.", links:[{t:"Play",u:"#",i:"▶"}] },
+          { name:"Experimental", badge:"Alt", desc:"A ‘fun’ slot to show range.", links:[{t:"Play",u:"#",i:"▶"},{t:"Buy",u:"#",i:"$"}] }
+        ],
+        side: [
+          { title:"Album notes", desc:"Optional: notes, credits, behind-the-scenes.", actions:[{t:"Read liner notes",u:"#",i:"⧉"},{t:"Credits",u:"#",i:"◎"}] }
+        ]
+      },
+
+      singles: {
+        title:"Singles",
+        hint:"Singles + features. Fast scan. Zero fluff.",
+        featured: [
+          { name:"Single A", badge:"Single", desc:"Short note. Where it fits in your sound.", links:[{t:"Play",u:"#",i:"▶"},{t:"Buy",u:"#",i:"$"}] },
+          { name:"Single B", badge:"Single", desc:"Collab? Put the feature name here.", links:[{t:"Play",u:"#",i:"▶"},{t:"YouTube",u:"#",i:"▶"}] },
+          { name:"Single C", badge:"Single", desc:"Tag with mood: hopeful / dark / cinematic.", links:[{t:"Play",u:"#",i:"▶"},{t:"Apple",u:"#",i:""}] },
+          { name:"Single D", badge:"Single", desc:"Keep consistent formatting so it looks pro.", links:[{t:"Play",u:"#",i:"▶"}] }
+        ],
+        side: [
+          { title:"Release strategy", desc:"Pin the current release / next release details.", actions:[{t:"Next drop: TBD",u:"#",i:"✶"}] }
+        ]
+      },
+
+      tools: {
+        title:"Music Tools",
+        hint:"DAW, mixing/mastering, and your go-to workflow tools.",
+        featured: [
+          { name:"Installing DAWG", badge:"Setup", desc:"Your DAW install / setup checklist page.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"MixAudio Custom Mixes", badge:"Mix", desc:"Mix workflow, references, or service link.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Mixea Music Mastering", badge:"Master", desc:"Mastering chain / service / notes.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Kunaki Order Status", badge:"Physical", desc:"CD / merch manufacturing status quick link.", links:[{t:"Open",u:"#",i:"⤴"}] }
+        ],
+        side: [
+          { title:"Workflow snapshots", desc:"Pin your current chain: DAW → mix → master → distribution.", actions:[
+            {t:"DAW template",u:"#",i:"▦"},
+            {t:"Mix checklist",u:"#",i:"🎚"},
+            {t:"Master notes",u:"#",i:"⟐"}
+          ]}
+        ]
+      },
+
+      vsts: {
+        title:"VSTs",
+        hint:"Your synths, FX, and favorites. Keep it curated.",
+        featured: [
+          { name:"Go-to Synth", badge:"Synth", desc:"Why you like it. What it’s best at.", links:[{t:"Website",u:"#",i:"⤴"}] },
+          { name:"Reverb / Space", badge:"FX", desc:"Your signature space.", links:[{t:"Website",u:"#",i:"⤴"}] },
+          { name:"Compression", badge:"FX", desc:"Glue tool or character tool.", links:[{t:"Website",u:"#",i:"⤴"}] },
+          { name:"Utility", badge:"Tool", desc:"Metering, tuning, cleanup.", links:[{t:"Website",u:"#",i:"⤴"}] }
+        ],
+        side: [
+          { title:"Collections", desc:"Optional: group by Synth / FX / Utilities.", actions:[
+            {t:"Synth folder",u:"#",i:"▣"},
+            {t:"FX folder",u:"#",i:"▣"},
+            {t:"Utilities",u:"#",i:"▣"}
+          ]}
+        ]
+      },
+
+      voice: {
+        title:"Voice Banks",
+        hint:"Alter/Ego, presets, voice banks, and vocal setup.",
+        featured: [
+          { name:"Vocal Presets", badge:"Chain", desc:"Your vocal chain presets and notes.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Alter/Ego Voice Banks", badge:"Voice", desc:"Your installed voices + favorites.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"AlterEgo User Instructions", badge:"Docs", desc:"Quick link to your notes.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Mic / Interface Setup", badge:"Hardware", desc:"Add your gear + settings.", links:[{t:"Open",u:"#",i:"⤴"}] }
+        ],
+        side: [
+          { title:"Recording checklist", desc:"A repeatable list makes you look insanely pro.", actions:[
+            {t:"Room noise check",u:"#",i:"✓"},
+            {t:"Gain staging",u:"#",i:"✓"},
+            {t:"Takes / comping",u:"#",i:"✓"}
+          ]}
+        ]
+      },
+
+      ai: {
+        title:"AI Music Tools",
+        hint:"Suno + other AI tools you use (curated and transparent).",
+        featured: [
+          { name:"Suno Audio Creation", badge:"AI", desc:"Link your Suno profile or prompt notebooks.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"AI Music Generator", badge:"AI", desc:"Any other generator you use. Keep it clean.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Music Genre Finder", badge:"Analysis", desc:"Tooling that helps you label/position tracks.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Reference Analysis", badge:"Workflow", desc:"How you use AI without losing your voice.", links:[{t:"Open",u:"#",i:"⤴"}] }
+        ],
+        side: [
+          { title:"Ethos", desc:"Optional: a short statement about how you use AI responsibly.", actions:[
+            {t:"My AI policy",u:"#",i:"⧉"},
+            {t:"Credits / disclosures",u:"#",i:"◎"}
+          ]}
+        ]
+      },
+
+      loops: {
+        title:"Seamless Song Loops",
+        hint:"Loop packs, stems, and your own seamless loops library.",
+        featured: [
+          { name:"Seamless Song Loops", badge:"Loops", desc:"Your loop pack hub. Fast download/play links.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"midi/withouttrain.wav", badge:"Audio", desc:"Example file from your tabs — pin key assets.", links:[{t:"Play",u:"#",i:"▶"},{t:"Download",u:"#",i:"↓"}] },
+          { name:"Loop Pack: Ambient", badge:"Pack", desc:"Short description + license note.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Loop Pack: Cinematic", badge:"Pack", desc:"Short description + license note.", links:[{t:"Open",u:"#",i:"⤴"}] }
+        ],
+        side: [
+          { title:"Licensing", desc:"Add simple licensing language here.", actions:[
+            {t:"Personal use",u:"#",i:"✓"},
+            {t:"Commercial use",u:"#",i:"✓"}
+          ]}
+        ]
+      },
+
+      library: {
+        title:"Library",
+        hint:"Everything saved in one place — your curated bookmarks.",
+        featured: [
+          { name:"Studio", badge:"Workspace", desc:"Your studio dashboard / hub.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"VSTs", badge:"Folder", desc:"Everything VST-related in one section.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Checkout", badge:"Store", desc:"If you sell direct, link your checkout here.", links:[{t:"Open",u:"#",i:"⤴"}] },
+          { name:"Notes", badge:"Docs", desc:"Your release checklist, templates, policies.", links:[{t:"Open",u:"#",i:"⤴"}] }
+        ],
+        side: [
+          { title:"Admin", desc:"Stuff you use often but don’t want public.", actions:[
+            {t:"(Optional) Private links",u:"#",i:"🔒"}
+          ]}
+        ]
+      }
+    }
+  };
+
+  const navEl = document.getElementById("nav");
+  const leftGrid = document.getElementById("leftGrid");
+  const rightList = document.getElementById("rightList");
+  const q = document.getElementById("q");
+
+  const viewTitle = document.getElementById("viewTitle");
+  const viewHint  = document.getElementById("viewHint");
+  const leftTitle = document.getElementById("leftTitle");
+  const leftMeta  = document.getElementById("leftMeta");
+  const rightTitle= document.getElementById("rightTitle");
+  const rightMeta = document.getElementById("rightMeta");
+
+  let currentView = "music";
+  let filterText = "";
+
+  function renderNav(){
+    navEl.innerHTML = "";
+    for(const item of DATA.nav){
+      const btn = document.createElement("button");
+      btn.className = item.id === currentView ? "active" : "";
+      btn.type = "button";
+      btn.onclick = () => { currentView = item.id; render(); highlightActive(); };
+      btn.innerHTML = `
+        <span class="ico" aria-hidden="true">${item.icon}</span>
+        <span class="meta">
+          <span class="title">${item.label}</span>
+          <span class="sub">${item.sub}</span>
+        </span>
+      `;
+      navEl.appendChild(btn);
+    }
+  }
+
+  function highlightActive(){
+    [...navEl.querySelectorAll("button")].forEach((b,i)=>{
+      const id = DATA.nav[i].id;
+      b.classList.toggle("active", id === currentView);
+    });
+  }
+
+  function matchesFilter(obj){
+    if(!filterText) return true;
+    const hay = JSON.stringify(obj).toLowerCase();
+    return hay.includes(filterText);
+  }
+
+  function render(){
+    const view = DATA.views[currentView] || DATA.views.music;
+
+    viewTitle.textContent = view.title;
+    viewHint.textContent  = view.hint;
+
+    leftTitle.textContent = "Featured";
+    rightTitle.textContent= "Quick";
+    rightMeta.textContent = "actions";
+
+    const featured = (view.featured || []).filter(matchesFilter);
+    const side = (view.side || []).filter(matchesFilter);
+
+    // Left grid
+    leftGrid.innerHTML = "";
+    for(const item of featured){
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="row">
+          <p class="name">${escapeHtml(item.name)}</p>
+          <span class="badge">${escapeHtml(item.badge || "")}</span>
+        </div>
+        <p class="desc">${escapeHtml(item.desc || "")}</p>
+        <div class="actions">
+          ${(item.links||[]).map(l => `
+            <a class="link" href="${l.u}" target="_blank" rel="noopener">
+              <span class="mini" aria-hidden="true">${escapeHtml(l.i||"⤴")}</span>
+              ${escapeHtml(l.t)}
+            </a>
+          `).join("")}
+        </div>
+      `;
+      leftGrid.appendChild(card);
+    }
+    leftMeta.textContent = `${featured.length} items`;
+
+    // Right list
+    rightList.innerHTML = "";
+    for(const block of side){
+      const row = document.createElement("div");
+      row.className = "bigCard";
+      row.innerHTML = `
+        <div class="art" aria-hidden="true"></div>
+        <div style="min-width:0">
+          <h4>${escapeHtml(block.title)}</h4>
+          <p>${escapeHtml(block.desc || "")}</p>
+          <div class="actions">
+            ${(block.actions||[]).map(a => `
+              <a class="link" href="${a.u}" target="_blank" rel="noopener">
+                <span class="mini" aria-hidden="true">${escapeHtml(a.i||"⤴")}</span>
+                ${escapeHtml(a.t)}
+              </a>
+            `).join("")}
+          </div>
+        </div>
+      `;
+      rightList.appendChild(row);
+    }
+
+    // If filter hides everything, show a friendly fallback
+    if(featured.length === 0 && side.length === 0){
+      leftGrid.innerHTML = `
+        <div class="card" style="grid-column:1/-1">
+          <div class="row">
+            <p class="name">No matches</p>
+            <span class="badge">Try another search</span>
+          </div>
+          <p class="desc">Tip: search “Suno”, “VST”, “Album”, “Loop”, “Alter/Ego”…</p>
+          <div class="actions">
+            <a class="link" href="#" onclick="document.getElementById('q').value='';document.getElementById('q').dispatchEvent(new Event('input'));return false;">
+              <span class="mini" aria-hidden="true">×</span> Clear search
+            </a>
+          </div>
+        </div>
+      `;
+      leftMeta.textContent = `0 items`;
+    }
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[m]));
+  }
+
+  q.addEventListener("input", (e)=>{
+    filterText = (e.target.value || "").trim().toLowerCase();
+    render();
+  });
+
+  document.getElementById("shuffleBtn").addEventListener("click", ()=>{
+    const keys = Object.keys(DATA.views);
+    currentView = keys[Math.floor(Math.random()*keys.length)];
+    render(); highlightActive();
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", async ()=>{
+    // Placeholder: copies current view name as "link"
+    const txt = `Farwalker3 — ${currentView}`;
+    try{
+      await navigator.clipboard.writeText(txt);
+      alert("Copied: " + txt);
+    }catch{
+      alert("Copy not available here. Text: " + txt);
+    }
+  });
+
+  // Initial render
+  renderNav();
+  render();
+</script>
+</body>
 </html>
