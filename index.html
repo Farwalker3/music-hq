@@ -267,7 +267,10 @@
       border-radius: var(--radius);
       padding:14px;
       min-height:0;
-      overflow:hidden;
+      
+      /* ✅ allow scrolling inside the panel */
+      overflow:auto;
+      
       display:flex;
       flex-direction:column;
     }
