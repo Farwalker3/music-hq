@@ -612,15 +612,114 @@
         ]
       },
 
+      // ✅ Replace ONLY the `vsts: { ... }` block inside DATA.views with this:
+      
       vsts: {
         title:"VSTs",
-        hint:"Your synths, FX, and favorites. Keep it curated.",
+        hint:"My synths, FX, sample tools, and sound-finders (curated).",
         featured: [
-          { name:"Go-to Synth", badge:"Synth", desc:"Why you like it. What it’s best at.", links:[{t:"Website",u:"#",i:"⤴"}] },
-          { name:"Reverb / Space", badge:"FX", desc:"Your signature space.", links:[{t:"Website",u:"#",i:"⤴"}] },
-          { name:"Compression", badge:"FX", desc:"Glue tool or character tool.", links:[{t:"Website",u:"#",i:"⤴"}] },
-          { name:"Utility", badge:"Tool", desc:"Metering, tuning, cleanup.", links:[{t:"Website",u:"#",i:"⤴"}] }
+          {
+            name:"Klevgrand — Speldosa",
+            badge:"Instrument",
+            desc:"Music box / plucked, delicate tonal vibe.",
+            links:[{t:"Open",u:"https://klevgrand.com/products/speldosa",i:"⤴"}]
+          },
+          {
+            name:"UVI — Noctua",
+            badge:"Instrument",
+            desc:"Dark / cinematic textures + playable sound design.",
+            links:[{t:"Open",u:"https://www.uvi.net/noctua",i:"⤴"}]
+          },
+          {
+            name:"Newfangled Audio — Saturate",
+            badge:"FX",
+            desc:"Saturation / color / harmonics (tone-shaping).",
+            links:[{t:"Open",u:"https://www.newfangledaudio.com/saturate",i:"⤴"}]
+          },
+          {
+            name:"Vital",
+            badge:"Synth (Free/Paid)",
+            desc:"Powerful wavetable synth (great core workhorse).",
+            links:[
+              {t:"Vital",u:"https://vital.audio/",i:"⤴"},
+              {t:"Micromusic Vital Pack",u:"https://micromusic.tech/purchase",i:"⤴"},
+              {t:"Blog mention",u:"https://bedroomproducersblog.com/2023/12/05/micromusic-vital/",i:"⤴"}
+            ]
+          },
+          {
+            name:"Xfer Records — Serum 2",
+            badge:"Synth",
+            desc:"Iconic wavetable synth (modern staple).",
+            links:[{t:"Open",u:"https://xferrecords.com/products/serum-2",i:"⤴"}]
+          },
+          {
+            name:"Samplab — Resynthesizer",
+            badge:"AI / Resynthesis",
+            desc:"Recreate / resynthesize sounds (sound matching workflow).",
+            links:[{t:"Open",u:"https://samplab.com/resynthesizer",i:"⤴"}]
+          },
+          {
+            name:"Waves — COSMOS Sample Finder",
+            badge:"Sample Finder",
+            desc:"Library search + similarity workflows.",
+            links:[{t:"Open",u:"https://www.waves.com/plugins/cosmos-sample-finder",i:"⤴"}]
+          },
+          {
+            name:"Output — Co-Producer",
+            badge:"AI / Assist",
+            desc:"Creative assistant / ideas tool.",
+            links:[{t:"Open",u:"https://output.com/products/co-producer",i:"⤴"}]
+          }
         ],
+        side: [
+          {
+            title:"Sound similarity / sample discovery",
+            desc:"Tools that help find “sounds like this” across libraries.",
+            actions:[
+              {t:"Jamahook Sound Assistant",u:"https://jamahook.com/sound-assistant/",i:"⤴"},
+              {t:"Jamahook (home)",u:"https://jamahook.com/",i:"⤴"},
+              {t:"Sononym",u:"https://www.sononym.net/",i:"⤴"},
+              {t:"Splice Similar Sounds (post)",u:"https://splice.com/blog/introducing-similar-sounds/",i:"⤴"},
+              {t:"Splice Sounds",u:"https://splice.com/sounds",i:"⤴"}
+            ]
+          },
+          {
+            title:"AI / assist tools (extra links)",
+            desc:"More AI-adjacent tools and references I’m tracking.",
+            actions:[
+              {t:"VroomAI",u:"https://vroomai.com/",i:"⤴"},
+              {t:"SampleLogic — Synth AI",u:"https://www.samplelogic.com/products/synth-ai/#watch",i:"⤴"},
+              {t:"AI DJ (GitHub)",u:"https://github.com/innermost47/ai-dj",i:"⤴"},
+              {t:"Video reference",u:"https://www.youtube.com/watch?v=8_Qa1wftlc8",i:"⤴"}
+            ]
+          },
+          {
+            title:"More instruments / vendors I like",
+            desc:"Bookmark shelf — explore when I’m expanding the palette.",
+            actions:[
+              {t:"Sonic Charge (products)",u:"https://soniccharge.com/products",i:"⤴"},
+              {t:"Splice Instruments",u:"https://splice.com/instrument",i:"⤴"},
+              {t:"WAVS.com",u:"https://wavs.com/",i:"⤴"},
+              {t:"SamplePlanet",u:"https://www.sampleplanet.fm/",i:"⤴"},
+              {t:"Void & Vista — Folds",u:"https://www.voidandvista.com/en-us/products/folds",i:"⤴"},
+              {t:"Roland Cloud — XV-5080",u:"https://www.roland.com/us/products/rc_xv-5080/",i:"⤴"}
+            ]
+          },
+          
+          // Optional: keep your “search tabs” as references without cluttering featured tiles
+          {
+            title:"Search / research tabs",
+            desc:"Queries I used while hunting specific sounds.",
+            actions:[
+              {t:"Ben Folds instrument VSTs (search)",u:"https://www.bing.com/search?q=Ben+Folds+instrument+VSTs&PC=U316&FORM=CHROMN",i:"⤴"},
+              {t:"Roland Cloud XV-5080 (search)",u:"https://www.bing.com/search?q=Roland%20Cloud%20%E2%80%93%20XV-5080%20plugin&qs=n&form=QBRE&sp=-1&lq=0&pq=&sc=0-0&sk=&cvid=D93F9AE144924775B66348F70A0CE7CB",i:"⤴"},
+              {t:"Rockin the Suburbs VST (search)",u:"https://www.bing.com/search?q=rockin+the+suburbs+%22VST%22&FORM=MUINRE",i:"⤴"},
+              {t:"AI music to VST detector (search)",u:"https://www.bing.com/search?q=ai%20music%20to%20%22vst%22%20detector&qs=n&form=QBRE&sp=-1&ghc=1&lq=0&pq=ai%20music%20to%20%22vst%22%20detector&sc=12-26&sk=&cvid=1E3707DE2C5F4A4CA197B269A366FA66",i:"⤴"},
+              {t:"Free AI recreate sounds VST (video ref)",u:"https://www.bing.com/videos/riverview/relatedvideo?q=Free+AI+recreate+sounds+VST&qs=n&sp=-1&lq=0&pq=free+ai+recreate+sounds+vst&sc=12-27&sk=&cvid=8A1513F9F5584E26B043167D6751D78B&FPIG=2CB2DAAD26E4421E902E7990088BBEDE&first=4&ajaxnorecss=1&sid=2A428E4D49E869DF14F098C048FC68B6&jsoncbid=9&ajaxsydconv=1&ru=/search?q%3DFree+AI+recreate+sounds+VST%26qs%3Dn%26sp%3D-1%26lq%3D0%26pq%3Dfree+ai+recreate+sounds+vst%26sc%3D12-27%26sk%3D%26cvid%3D8A1513F9F5584E26B043167D6751D78B%26FPIG%3D2CB2DAAD26E4421E902E7990088BBEDE%26first%3D4%26FORM%3DPERE%26ajaxnorecss%3D1%26sid%3D2A428E4D49E869DF14F098C048FC68B6%26format%3Dsnrjson%26jsoncbid%3D9%26ajaxsydconv%3D1&mmscn=vwrc&mid=5632381AAFF2DBF033EC5632381AAFF2DBF033EC&FORM=WRVORC&ntb=1&msockid=db0d413ebe6811f086ee22c5acd286a8",i:"⤴"}
+            ]
+          }
+        ]
+      },
         side: [
           { title:"Collections", desc:"Optional: group by Synth / FX / Utilities.", actions:[
             {t:"Synth folder",u:"#",i:"▣"},
