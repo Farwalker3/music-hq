@@ -775,19 +775,36 @@
 
       voice: {
         title:"Voice Banks",
-        hint:"Alter/Ego, presets, voice banks, and vocal setup.",
+        hint:"Alter/Ego, presets, and vocal setup.",
         featured: [
-          { name:"Vocal Presets", badge:"Chain", desc:"Your vocal chain presets and notes.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"Alter/Ego Voice Banks", badge:"Voice", desc:"Your installed voices + favorites.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"AlterEgo User Instructions", badge:"Docs", desc:"Quick link to your notes.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"Mic / Interface Setup", badge:"Hardware", desc:"Add your gear + settings.", links:[{t:"Open",u:"#",i:"⤴"}] }
+          {
+            name:"Alter/Ego Guide (PDF)",
+            badge:"Docs",
+            desc:"Reference manual for Alter/Ego.",
+            links:[{t:"Open",u:"https://s3.amazonaws.com/palterego/AlterEgo_guide.pdf",i:"⤴"}]
+          },
+          {
+            name:"Alter/Ego Voice Banks (Plogue)",
+            badge:"Voice Banks",
+            desc:"Voice bank catalog.",
+            links:[{t:"Open",u:"https://www.plogue.com/products/voice-banks.html",i:"⤴"}]
+          },
+          {
+            name:"Vocal Presets (Rysup Audio)",
+            badge:"Presets",
+            desc:"Vocal preset packs / chains.",
+            links:[{t:"Open",u:"https://rysupaudio.com/",i:"⤴"}]
+          }
         ],
         side: [
-          { title:"Recording checklist", desc:"A repeatable list makes you look insanely pro.", actions:[
-            {t:"Room noise check",u:"#",i:"✓"},
-            {t:"Gain staging",u:"#",i:"✓"},
-            {t:"Takes / comping",u:"#",i:"✓"}
-          ]}
+          {
+            title:"Session prep",
+            desc:"Make recording days repeatable.",
+            actions:[
+              {t:"(Add) Mic chain notes",u:"#",i:"⧉"},
+              {t:"(Add) Gain staging target",u:"#",i:"⧉"}
+            ]
+          }
         ]
       },
 
@@ -841,34 +858,84 @@
 
       loops: {
         title:"Seamless Song Loops",
-        hint:"Loop packs, stems, and your own seamless loops library.",
+        hint:"Loop tools + references for seamless looping audio.",
         featured: [
-          { name:"Seamless Song Loops", badge:"Loops", desc:"Your loop pack hub. Fast download/play links.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"midi/withouttrain.wav", badge:"Audio", desc:"Example file from your tabs — pin key assets.", links:[{t:"Play",u:"#",i:"▶"},{t:"Download",u:"#",i:"↓"}] },
-          { name:"Loop Pack: Ambient", badge:"Pack", desc:"Short description + license note.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"Loop Pack: Cinematic", badge:"Pack", desc:"Short description + license note.", links:[{t:"Open",u:"#",i:"⤴"}] }
+          {
+            name:"Audjust — Seamless Loop Generator",
+            badge:"AI Looping",
+            desc:"Generate seamless loops from audio.",
+            links:[{t:"Open",u:"https://www.audjust.com/loop",i:"⤴"}]
+          },
+          {
+            name:"withoutrain.wav (reference — not mine)",
+            badge:"Reference",
+            desc:"A song I don’t own — kept here as a reference link only.",
+            links:[{t:"Open",u:"http://www.sandy-travels.com/midi/withoutrain.wav",i:"⤴"}]
+          }
         ],
         side: [
-          { title:"Licensing", desc:"Add simple licensing language here.", actions:[
-            {t:"Personal use",u:"#",i:"✓"},
-            {t:"Commercial use",u:"#",i:"✓"}
-          ]}
+          {
+            title:"Loop workflow notes",
+            desc:"Optional: keep your looping rules and checklist here.",
+            actions:[
+              {t:"(Add) My loop checklist",u:"#",i:"⧉"},
+              {t:"(Add) Preferred BPM ranges",u:"#",i:"⧉"}
+            ]
+          }
         ]
       },
 
       library: {
         title:"Library",
-        hint:"Everything saved in one place — your curated bookmarks.",
+        hint:"Everything saved — your professional bookmark shelf.",
         featured: [
-          { name:"Studio", badge:"Workspace", desc:"Your studio dashboard / hub.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"VSTs", badge:"Folder", desc:"Everything VST-related in one section.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"Checkout", badge:"Store", desc:"If you sell direct, link your checkout here.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"Notes", badge:"Docs", desc:"Your release checklist, templates, policies.", links:[{t:"Open",u:"#",i:"⤴"}] }
+          {
+            name:"BandLab — Projects",
+            badge:"DAW / Cloud",
+            desc:"Recent projects.",
+            links:[{t:"Open",u:"https://www.bandlab.com/library/projects/recent",i:"⤴"}]
+          },
+          {
+            name:"Kodland (BandLab post)",
+            badge:"Album",
+            desc:"My album on BandLab.",
+            links:[{t:"Open",u:"https://www.bandlab.com/post/58eaba2d-4894-ec11-94f6-0004ffd34483",i:"⤴"}]
+          },
+          {
+            name:"Sonicwire",
+            badge:"Marketplace",
+            desc:"Samples / sounds marketplace.",
+            links:[{t:"Open",u:"https://sonicwire.com/",i:"⤴"}]
+          },
+          {
+            name:"Kunaki",
+            badge:"Manufacturing",
+            desc:"Physical media orders.",
+            links:[{t:"Open",u:"https://kunaki.com/",i:"⤴"}]
+          }
         ],
         side: [
-          { title:"Admin", desc:"Stuff you use often but don’t want public.", actions:[
-            {t:"(Optional) Private links",u:"#",i:"🔒"}
-          ]}
+          {
+            title:"AI creation shortcuts",
+            desc:"Jump straight into the tools.",
+            actions:[
+              {t:"Suno",u:"https://suno.com/create",i:"⤴"},
+              {t:"Udio",u:"https://www.udio.com/login?redirect=/create",i:"⤴"},
+              {t:"Soundverse",u:"https://www.soundverse.ai/login?callbackUrl=/studio/6801b75abc02625b571deb22",i:"⤴"},
+              {t:"mix.audio",u:"https://mix.audio/bgm/explore",i:"⤴"}
+            ]
+          },
+          {
+            title:"Utilities",
+            desc:"Small helpers that save time.",
+            actions:[
+              {t:"LRC Generator",u:"https://www.lrcgenerator.com/",i:"⤴"},
+              {t:"AI Genre Finder",u:"https://audioaidynamics.com/genre-finder",i:"⤴"},
+              {t:"Decohere",u:"https://www.decohere.ai/",i:"⤴"},
+              {t:"Haiper",u:"https://haiper.ai/",i:"⤴"},
+              {t:"Transitions DJ",u:"https://dj.app/",i:"⤴"}
+            ]
+          }
         ]
       }
     }
