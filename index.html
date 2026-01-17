@@ -610,19 +610,57 @@
 
       tools: {
         title:"Music Tools",
-        hint:"DAW, mixing/mastering, and your go-to workflow tools.",
+        hint:"DAW, mixing/mastering, distribution, and utility links I use.",
         featured: [
-          { name:"Installing DAWG", badge:"Setup", desc:"Your DAW install / setup checklist page.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"MixAudio Custom Mixes", badge:"Mix", desc:"Mix workflow, references, or service link.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"Mixea Music Mastering", badge:"Master", desc:"Mastering chain / service / notes.", links:[{t:"Open",u:"#",i:"⤴"}] },
-          { name:"Kunaki Order Status", badge:"Physical", desc:"CD / merch manufacturing status quick link.", links:[{t:"Open",u:"#",i:"⤴"}] }
+          {
+            name:"Installing DAWG",
+            badge:"DAW",
+            desc:"Install + setup guide (includes ML models).",
+            links:[{t:"Open",u:"https://dawg.dev/guide/installation.html#including-machine-learning-models",i:"⤴"}]
+          },
+          {
+            name:"BandLab — Projects",
+            badge:"DAW / Cloud",
+            desc:"My recent projects + drafts (BandLab).",
+            links:[{t:"Open",u:"https://www.bandlab.com/library/projects/recent",i:"⤴"}]
+          },
+          {
+            name:"Mixea Music Mastering",
+            badge:"Mastering",
+            desc:"Quick mastering workflow link.",
+            links:[{t:"Open",u:"https://distrokid.com/mixea/?mixeasonguuid=BC20A3A5538385737398E5BE4DA965B7&c=null",i:"⤴"}]
+          },
+          {
+            name:"Kunaki",
+            badge:"Manufacturing",
+            desc:"CD / physical media orders.",
+            links:[{t:"Open",u:"https://kunaki.com/",i:"⤴"}]
+          }
         ],
         side: [
-          { title:"Workflow snapshots", desc:"Pin your current chain: DAW → mix → master → distribution.", actions:[
-            {t:"DAW template",u:"#",i:"▦"},
-            {t:"Mix checklist",u:"#",i:"🎚"},
-            {t:"Master notes",u:"#",i:"⟐"}
-          ]}
+          {
+            title:"Lyrics + metadata helpers",
+            desc:"Fast tools for captions, timing, and release prep.",
+            actions:[
+              {t:"LRC Generator",u:"https://www.lrcgenerator.com/",i:"⤴"},
+              {t:"AI Genre Finder",u:"https://audioaidynamics.com/genre-finder",i:"⤴"}
+            ]
+          },
+          {
+            title:"Marketplaces / libraries",
+            desc:"Places I browse for samples or distribution options.",
+            actions:[
+              {t:"Sonicwire",u:"https://sonicwire.com/",i:"⤴"},
+              {t:"Audiomack Creator Dashboard",u:"https://creators.audiomack.com/login?redirectTo=/dashboard",i:"⤴"}
+            ]
+          },
+          {
+            title:"My releases",
+            desc:"Direct links to albums / posts.",
+            actions:[
+              {t:"Kodland (BandLab album/post)",u:"https://www.bandlab.com/post/58eaba2d-4894-ec11-94f6-0004ffd34483",i:"⤴"}
+            ]
+          }
         ]
       },
 
